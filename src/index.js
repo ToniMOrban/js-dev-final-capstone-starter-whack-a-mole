@@ -1,7 +1,6 @@
 const holes = document.querySelectorAll('.hole');
 const moles = document.querySelectorAll('.mole');
 const startButton = document.querySelector('#start');
-// TODO: Add the missing query selectors:
 const score = document.querySelector('#score');
 const timerDisplay = document.querySelector('#timer'); 
 
@@ -21,7 +20,7 @@ let difficulty = "hard";
  *
  */
 function randomInteger(min, max) {
-   return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /**
@@ -42,10 +41,10 @@ function randomInteger(min, max) {
 function setDelay(difficulty) {
   if (difficulty === "easy") {
     return 1500;
-  } else if (difficulty === "normal"){
+  } else if (difficulty === "normal") {
     return 1000;
   } else {
-    return randomInteger(600, 1200)
+    return randomInteger(600, 1200);
   }
 }
 
@@ -64,13 +63,11 @@ function setDelay(difficulty) {
  * chooseHole(holes) //> returns one of the 9 holes that you defined
  */
 
-const holes = document.querySelectorAll('.hole');
 function chooseHole(holes) {
-  let randomIndex = randomInteger(0, 8);
-  let lastHole = '';
-  const hole = holes[randomIndex];
+  const index = randomInteger(0, 8);
+  const hole = holes[index];
   if (hole === lastHole) {
-    chooseHole(holes);
+    return chooseHole(holes);
   } else {
     lastHole = hole;
     return hole;
@@ -98,8 +95,13 @@ function chooseHole(holes) {
 *
 */
 function gameOver() {
-  // TODO: Write your code here
-  
+  if (time > 0) {
+    timeoutID = showUp();
+    return timeoutID;
+  } else {
+    gameStopped = stopGame();
+    return gameStopped;
+  }
 }
 
 /**
@@ -112,8 +114,8 @@ function gameOver() {
 *
 */
 function showUp() {
-  let delay = 0; // TODO: Update so that it uses setDelay()
-  const hole = 0;  // TODO: Update so that it use chooseHole()
+  let delay = setDelay();
+  const hole = chooseHole(holes);
   return showAndHide(hole, delay);
 }
 
@@ -125,14 +127,12 @@ function showUp() {
 * the timeoutID
 *
 */
-function showAndHide(hole, delay){
-  // TODO: call the toggleVisibility function so that it adds the 'show' class.
-  
+function showAndHide(hole, delay) {
+  toggleVisibility(hole);
   const timeoutID = setTimeout(() => {
-    // TODO: call the toggleVisibility function so that it removes the 'show' class when the timer times out.
-    
+    toggleVisibility(hole);
     gameOver();
-  }, 0); // TODO: change the setTimeout delay to the one provided as a parameter
+  }, delay);
   return timeoutID;
 }
 
@@ -142,9 +142,8 @@ function showAndHide(hole, delay){
 * a given hole. It returns the hole.
 *
 */
-function toggleVisibility(hole){
-  // TODO: add hole.classList.toggle so that it adds or removes the 'show' class.
-  
+function toggleVisibility(hole) {
+  hole.classList.toggle('show');
   return hole;
 }
 
@@ -256,9 +255,9 @@ function stopGame(){
 * is clicked.
 *
 */
-function startGame(){
-  //setDuration(10);
-  //showUp();
+function startGame() {
+  setDuration(10);
+  showUp();
   return "game started";
 }
 
