@@ -266,6 +266,7 @@ function startGame() {
 startButton.addEventListener("click", startGame);
 
 
+
 // Please do not modify the code below.
 // Used for testing purposes.
 window.randomInteger = randomInteger;
