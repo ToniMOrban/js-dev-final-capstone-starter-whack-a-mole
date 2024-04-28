@@ -3,6 +3,8 @@ const moles = document.querySelectorAll('.mole');
 const startButton = document.querySelector('#start');
 const score = document.querySelector('#score');
 const timerDisplay = document.querySelector('#timer'); 
+const backgroundMusic = new Audio('assets/molesong.mp3');
+backgroundMusic.controls = false;
 
 let time;
 let timer;
@@ -245,7 +247,7 @@ function setDuration(duration) {
 *
 */
 function stopGame(){
-  // stopAudio(song);  //optional
+  //stopAudio(song);  //optional
   clearInterval(timer);
   return "game stopped";
 }
@@ -257,9 +259,12 @@ function stopGame(){
 *
 */
 function startGame() {
-  setDuration(10);
+  let initialTimerDisplay = 25;
+  timerDisplay.textContent = initialTimerDisplay;
+  setDuration(initialTimerDisplay);
   clearScore();
   showUp();
+  //backgroundMusic.play();
   return "game started";
 }
 
