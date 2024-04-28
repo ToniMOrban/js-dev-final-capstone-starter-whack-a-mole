@@ -46,8 +46,25 @@
       </div>
     </div>
 
-    <!-- creates the start button so that a player can start the game-->
+    <!-- creates the start button and difficulty radio buttons so that a player can start the game-->
+    
+    <div class="difficulty">
+      <h3>Difficulty</h3>
+        <div>
+        <input type="radio" id="easy" name="difficulty" value="Easy">
+          <label for="easy">Easy</label>
+        </div>
+        <div>
+        <input type="radio" id="normal" name="difficulty" value="Normal">
+          <label for="easy">Normal</label>
+        </div>
+        <div>
+          <input type="radio" id="hard" name="difficulty" value="Hard">
+            <label for="easy">Hard</label>
+        </div>
+    </div>
     <button id="start">Start</button>
+  
     
     <script src="./src/index.js"></script>
   </body>

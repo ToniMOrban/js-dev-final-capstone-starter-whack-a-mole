@@ -4,13 +4,15 @@ const startButton = document.querySelector('#start');
 const score = document.querySelector('#score');
 const timerDisplay = document.querySelector('#timer'); 
 const backgroundMusic = new Audio('assets/molesong.mp3');
+const clickSound = new Audio('assets/click.mp3');
 backgroundMusic.controls = false;
 
 let time;
 let timer;
 let lastHole = 0;
 let points = 0;
-let difficulty = "hard";
+let difficulty;
+
 
 /**
  * Generates a random integer within a range.
@@ -41,6 +43,14 @@ function randomInteger(min, max) {
  *
  */
 function setDelay(difficulty) {
+  if(document.getElementById('easy').checked) {
+    difficulty = "easy";
+  }else if(document.getElementById('normal').checked) {
+    difficulty = "normal";
+  } else {
+    difficulty = "hard";
+  }
+  console.log(difficulty);
   if (difficulty === "easy") {
     return 1500;
   } else if (difficulty === "normal") {
@@ -212,6 +222,7 @@ function startTimer() {
 */
 function whack(event) {
   updateScore();
+  clickSound.play();
   return points;
 }
 
@@ -264,7 +275,7 @@ function startGame() {
   setDuration(initialTimerDisplay);
   clearScore();
   showUp();
-  //backgroundMusic.play();
+  backgroundMusic.play();
   return "game started";
 }
 
