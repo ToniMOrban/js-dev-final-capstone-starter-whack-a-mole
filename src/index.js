@@ -22,18 +22,23 @@ let difficulty;
 let highestScore = 0;
 
 
-
+/* clears the modal displaying the difficulty radio buttons and 
+  *start button once the user clicks start*/
 const closeModal = function () {
   endModal.classList.add('hidden');
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
 }
 
+/* opens the modal displaying the end game message, the paly again
+  *button and the change difficulty button*/
 const openEndModal = function () {
   endModal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 }
 
+/* opens the modal displaying the difficulty radio buttons and 
+  *start button once the user clicks start*/
 const chagneDifficultyModal = function (){
   endModal.classList.add('hidden');
   modal.classList.remove('hidden');
@@ -277,6 +282,13 @@ function setDuration(duration) {
   return time;
 }
 
+/**
+*
+* This function updates the high score if user has earned a new high score
+* and changes the end game message. If the user doesn't earn a new high 
+* score sets generic end game message.
+*
+*/
 function updateHighScore(){
   if (highestScore < points) {
     highestScore = points;
