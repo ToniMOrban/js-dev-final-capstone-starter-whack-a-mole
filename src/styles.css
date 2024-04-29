@@ -35,8 +35,13 @@ h3 {
     text-align: center;
     font-size: 30px;
     position: relative;
-    top: -150px;
+    top: -50px;
     margin-top: 20px;
+    border-radius: 20px;
+    left: -35%;
+    border: solid;
+    background-color: rgb(69, 119, 69);
+    border-width: 3px;
 }
 
 #timer{
@@ -53,7 +58,9 @@ h3 {
   padding-bottom: 20px;
   padding-top: 0px;
   position: relative;
-  top: -150px;
+  top: -50px;
+  left: -70%;
+  border-radius: 5px;
 }
 
 
@@ -122,4 +129,101 @@ h3 {
 .hole.show .mole {
   top: 0;
   /*transform: scale(1.1);*/
+}
+
+
+/* classes to make modal work */
+.hidden {
+  display: none;
+}
+
+.modal,
+.endModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 120px;
+
+  background-color: rgb(18, 66, 35);
+  padding: 6rem;
+  border-radius: 5px;
+  border: solid;
+  border-width: 10px;
+  border-color: black;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+/* .endModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 120px;
+
+  background-color: rgb(18, 66, 35);
+  padding: 6rem;
+  border-radius: 5px;
+  border: solid;
+  border-width: 10px;
+  border-color: black;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+} */
+
+.endModal > h3 {
+  width: 180px;
+  font-size: 30px;
+  position: absolute;
+  left: 17%;
+  top: 0%;
+}
+
+.endModal > p {
+  width: 180px;
+  font-size: 28px;
+  position: absolute;
+  left: 20%;
+  top: 15%;
+}
+
+#start-again {
+  text-align: center;
+  font-size: 20px;
+  position: relative;
+  top: 90px;
+  margin-top: 5px;
+  border-radius: 20px;
+  left: -35%;
+  border: solid;
+  background-color: rgb(69, 119, 69);
+  border-width: 3px;
+}
+
+#change-difficulty {
+  text-align: center;
+  font-size: 20px;
+  position: relative;
+  top: 90px;
+  margin-top: 5px;
+  border-radius: 20px;
+  left: -50%;
+  border: solid;
+  background-color: rgb(69, 119, 69);
+  border-width: 3px;
+}
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
 }

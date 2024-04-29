@@ -6,7 +6,7 @@
     <h1 id="title">Pet-a-Corgi</h1>
     <div>
       <div>
-        <h2>Click start to play!</h2>
+        <h2>High Score: <span id="high-score">0</span></h2>
       </div>
       <div>
         <h2>score: <span id="score">0</span></h2>
@@ -47,23 +47,32 @@
     </div>
 
     <!-- creates the start button and difficulty radio buttons so that a player can start the game-->
-    
-    <div class="difficulty">
-      <h3>Difficulty</h3>
-        <div>
-        <input type="radio" id="easy" name="difficulty" value="Easy">
-          <label for="easy">Easy</label>
-        </div>
-        <div>
-        <input type="radio" id="normal" name="difficulty" value="Normal">
-          <label for="easy">Normal</label>
-        </div>
-        <div>
-          <input type="radio" id="hard" name="difficulty" value="Hard">
-            <label for="easy">Hard</label>
-        </div>
+    <div class = "modal">
+      <div class="difficulty">
+        <h3>Difficulty</h3>
+          <div>
+          <input type="radio" id="easy" name="difficulty" value="Easy">
+            <label for="easy">Easy</label>
+          </div>
+          <div>
+          <input type="radio" id="normal" name="difficulty" value="Normal">
+            <label for="easy">Normal</label>
+          </div>
+          <div>
+            <input type="radio" id="hard" name="difficulty" value="Hard">
+              <label for="easy">Hard</label>
+          </div>
+      </div>
+      <button class="close-modal" id="start">Start</button>
     </div>
-    <button id="start">Start</button>
+
+    <div class = "endModal hidden">
+      <h3>Game Over</h3>
+      <p id="ending-message"></p>
+      <button id="start-again">Play Again</button>
+      <button id="change-difficulty">Change Difficulty</button>
+    </div>
+    <div class="overlay"></div>
   
     
     <script src="./src/index.js"></script>

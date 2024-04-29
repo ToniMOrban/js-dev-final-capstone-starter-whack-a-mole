@@ -1,17 +1,43 @@
 const holes = document.querySelectorAll('.hole');
 const moles = document.querySelectorAll('.mole');
 const startButton = document.querySelector('#start');
+const playAgainButton = document.querySelector('#start-again');
+const changeDifficultyButton = document.querySelector('#change-difficulty');
 const score = document.querySelector('#score');
 const timerDisplay = document.querySelector('#timer'); 
 const backgroundMusic = new Audio('assets/molesong.mp3');
 const clickSound = new Audio('assets/click.mp3');
 backgroundMusic.controls = false;
+const modal = document.querySelector('.modal');
+const endModal = document.querySelector('.endModal');
+const overlay = document.querySelector('.overlay');
+const highScore = document.querySelector('#high-score');
+const signOff = document.querySelector('#ending-message');
 
 let time;
 let timer;
 let lastHole = 0;
 let points = 0;
 let difficulty;
+let highestScore = 0;
+
+
+
+const closeModal = function () {
+  endModal.classList.add('hidden');
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+}
+
+const openEndModal = function () {
+  endModal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+}
+
+const chagneDifficultyModal = function (){
+  endModal.classList.add('hidden');
+  modal.classList.remove('hidden');
+}
 
 
 /**
@@ -251,6 +277,15 @@ function setDuration(duration) {
   return time;
 }
 
+function updateHighScore(){
+  if (highestScore < points) {
+    highestScore = points;
+    highScore.innerText = highestScore;
+    signOff.innerText = "Congrats you got a new high score!";
+  } else {
+    signOff.innerText = "Great Game!"
+  }
+}
 /**
 *
 * This function is called when the game is stopped. It clears the
@@ -259,7 +294,9 @@ function setDuration(duration) {
 */
 function stopGame(){
   //stopAudio(song);  //optional
+  updateHighScore();
   clearInterval(timer);
+  openEndModal();
   return "game stopped";
 }
 
@@ -276,10 +313,17 @@ function startGame() {
   clearScore();
   showUp();
   backgroundMusic.play();
+  closeModal();
   return "game started";
 }
 
+function changeDifficulty() {
+  chagneDifficultyModal();
+}
+
 startButton.addEventListener("click", startGame);
+playAgainButton.addEventListener("click", startGame);
+changeDifficultyButton.addEventListener("click", changeDifficulty);
 
 
 
